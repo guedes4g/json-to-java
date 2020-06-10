@@ -24,10 +24,12 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run Install
-      run: npm install
+      run: npm ci
       
     - name: Run pretest [compile + lint]
       run: npm run pretest
     
     - name: Pre publish
       run: npm test 
+      env:
+        CI: "true"
