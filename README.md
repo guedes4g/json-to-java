@@ -1,3 +1,5 @@
+![CI](https://github.com/guedes4g/json-to-java/workflows/CI/badge.svg)
+
 # json2java README
 
 This is the README for your extension "json2java". After writing up a brief description, we recommend including the following sections.
