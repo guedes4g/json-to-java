@@ -16,12 +16,15 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container: node:12.18.0-stretch
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
     # Runs a single command using the runners shell
     - name: Run Install
       run: npm ci
@@ -29,5 +32,7 @@ jobs:
     - name: Run pretest [compile + lint]
       run: npm run pretest
      
-    - run: sudo apt-get install xvfb
-    - run: xvfb-run --auto-servernum npm test
+    - name: Run headless test
+      uses: GabrielBB/xvfb-action@v1.0
+      with:
+        run: npm test
