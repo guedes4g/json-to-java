@@ -1,5 +1,5 @@
 # json2java README
-Json to java converter
+Json to java converter 
 ## Features
 
 ## Requirements
