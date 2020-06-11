@@ -1,10 +1,11 @@
 {
+	"publisher": "felipeguedes",
 	"name": "json2java",
 	"displayName": "json to java",
 	"description": "transforms json to java class",
 	"version": "0.0.1",
 	"engines": {
-		"vscode": "^1.46.0"
+		"vscode": "^1.45.0"
 	},
 	"categories": [
 		"Other"
@@ -30,7 +31,7 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.46.0",
+		"@types/vscode": "^1.45.0",
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^7.0.2",
 		"@types/node": "^13.11.0",
@@ -41,5 +42,24 @@
 		"mocha": "^7.1.2",
 		"typescript": "^3.8.3",
 		"vscode-test": "^1.3.0"
-	}
+	},
+	"release": {
+		"branches": "master",
+		"verifyConditions": [
+			"@semantic-release/github"
+		],
+		"publish": [
+			"@semantic-release/github"
+		],
+		"success": [
+			"@semantic-release/github"
+		],
+		"fail": [
+			"@semantic-release/github"
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/guedes4g/json-to-java.git"
+  	}
 }
