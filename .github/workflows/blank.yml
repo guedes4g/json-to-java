@@ -28,8 +28,6 @@ jobs:
       
     - name: Run pretest [compile + lint]
       run: npm run pretest
-    
-    - name: Pre publish
-      uses: GabrielBB/xvfb-action@v1.2
-      with:
-        run: npm test
+     
+    - run: sudo apt-get install xvfb
+    - run: xvfb-run --auto-servernum npm test
