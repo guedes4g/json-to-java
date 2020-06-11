@@ -1,5 +1,5 @@
 {
-	"publisher": "felipeguedes"
+	"publisher": "felipeguedes",
 	"name": "json2java",
 	"displayName": "json to java",
 	"description": "transforms json to java class",
