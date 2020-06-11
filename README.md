@@ -1,5 +1,3 @@
-![CI](https://github.com/guedes4g/json-to-java/workflows/CI/badge.svg)
-
 # json2java README
 
 ## Features
