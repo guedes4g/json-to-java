@@ -17,8 +17,6 @@ export const openJsonFile = (filePath: string): javaClass[] | null => {
   const fileBody = fs.readFileSync(filePath, "utf8");
   const fileName = path.parse(filePath).name;
 
-  console.log(fileName);
-
   try {
     const jsonRawData = JSON.parse(fileBody);
 
