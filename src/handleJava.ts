@@ -1,16 +1,5 @@
-import fs = require("fs");
-import path = require("path");
-
 import { javaClassBody, javaClass, javaAttribute } from "./types";
 import { pascalCase, camelCase } from "./helper";
-
-const writeJavaClasses = (classes: javaClass[], dirPath: string): void => {
-  classes.forEach(javaClass => {
-    const { name, textBody }: javaClassBody = writeJavaClass(javaClass);
-
-    fs.writeFileSync(path.join(dirPath, `${name}.java`), textBody);
-  });
-};
 
 const writeJavaClass = (javaClass: javaClass): javaClassBody => {
   let body = "";
@@ -44,7 +33,7 @@ const writeJavaClass = (javaClass: javaClass): javaClassBody => {
 
   body += `}`;
 
-  return { name: javaClass.name, textBody: body };
+  return { name: pascalCase(javaClass.name), textBody: body };
 };
 
 const handleJavaClassType = (attribute: javaAttribute) => {
@@ -55,4 +44,4 @@ const handleJavaClassType = (attribute: javaAttribute) => {
   return attribute.type;
 };
 
-export default writeJavaClasses;
+export default writeJavaClass;
