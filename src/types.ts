@@ -10,7 +10,7 @@ export type javaClass = {
   attributes: javaAttribute[]
 };
 
-export type rawData = {
+export type rawDataEntity = {
   name: string,
   rawData: any
 };

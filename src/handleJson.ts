@@ -1,18 +1,18 @@
-import { javaClass, rawData, attributeType } from "./types";
+import { javaClass, rawDataEntity, attributeType } from "./types";
 
 const jsonToJava = (data: any, fileName: string): javaClass[] => {
   const classes: javaClass[] = [];
-  const rawDataQueue: rawData[] = [];
+  const queue: rawDataEntity[] = [];
 
-  rawDataQueue.push({ name: fileName, rawData: data });
+  queue.push({ name: fileName, rawData: data });
 
-  while (rawDataQueue.length) {
-    const rawData: rawData = rawDataQueue.shift() as rawData;
-    const javaClass: javaClass = { name: rawData.name, attributes: [] };
+  while (queue.length) {
+    const entity: rawDataEntity = queue.shift() as rawDataEntity;
+    const javaClass: javaClass = { name: entity.name, attributes: [] };
 
-    Object.keys(rawData.rawData)
+    Object.keys(entity.rawData)
       .forEach((key: string) => {
-        const value: any = rawData.rawData[key];
+        const value: any = entity.rawData[key];
         const type: attributeType = discoverTypeFromValue(value);
 
         //push attribute into the class
@@ -20,7 +20,7 @@ const jsonToJava = (data: any, fileName: string): javaClass[] => {
 
         //if (type === "list" || type === "object")
         if (type === "object") {
-          rawDataQueue.push({ name: key, rawData: value });
+          queue.push({ name: key, rawData: value });
         }
       });
 
