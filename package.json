@@ -66,6 +66,7 @@
 		"url": "https://github.com/guedes4g/json-to-java.git"
 	},
 	"dependencies": {
+		"esm": "^3.2.25",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.upperfirst": "^4.3.1"
 	}
