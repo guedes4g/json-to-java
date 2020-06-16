@@ -15,7 +15,7 @@ export const writeJavaClasses = (classes: javaClass[], dirPath: string): void =>
 
 export const openJsonFile = (filePath: string): javaClass[] | null => {
   const fileBody = fs.readFileSync(filePath, "utf8");
-  const fileName = path.basename(filePath);
+  const fileName = path.parse(filePath).name;
 
   console.log(fileName);
 
