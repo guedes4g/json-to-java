@@ -49,7 +49,7 @@ const structureObjectsInList = (rawData: any[]) => {
   });
 
   return newUnifiedRawData;
-}
+};
 
 const discoverTypeFromValue = (value: any): attributeType => {
   if (Array.isArray(value)) {
