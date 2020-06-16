@@ -4,3 +4,4 @@ node_modules
 *.vsix
 .git
 src/*.js
+example/*.java
