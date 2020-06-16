@@ -12,7 +12,7 @@ const jsonToJava = (data: any, fileName: string): javaClass[] => {
 
     Object.keys(rawData.rawData)
       .forEach((key: string) => {
-        const value: any = data[key];
+        const value: any = rawData.rawData[key];
         const type: attributeType = discoverTypeFromValue(value);
 
         //push attribute into the class
