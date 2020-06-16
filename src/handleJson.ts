@@ -1,26 +1,37 @@
-import { javaClass, rawData, attributeType } from "./types";
+import { javaClass, rawDataEntity, attributeType } from "./types";
 
 const jsonToJava = (data: any, fileName: string): javaClass[] => {
   const classes: javaClass[] = [];
-  const rawDataQueue: rawData[] = [];
+  const queue: rawDataEntity[] = [];
 
-  rawDataQueue.push({ name: fileName, rawData: data });
+  queue.push({ name: fileName, rawData: data });
 
-  while (rawDataQueue.length) {
-    const rawData: rawData = rawDataQueue.shift() as rawData;
-    const javaClass: javaClass = { name: rawData.name, attributes: [] };
+  while (queue.length) {
+    const entity: rawDataEntity = queue.shift() as rawDataEntity;
+    const javaClass: javaClass = { name: entity.name, attributes: [] };
 
-    Object.keys(rawData.rawData)
-      .forEach((key: string) => {
-        const value: any = data[key];
-        const type: attributeType = discoverTypeFromValue(value);
+    Object.keys(entity.rawData)
+      .forEach((name: string) => {
+        let value: any = entity.rawData[name];
+        let type: attributeType = discoverTypeFromValue(value);
+        const isList = type === "list";
+
+        //Special case when it's a list. The type and value assumed must be the values of the list
+        if (isList) {
+          //In case it's a empty list, the attribute will be ignored
+          if ((value as Array<any>).length === 0) {
+            return;
+          }
+
+          type = discoverTypeFromValue(value[0]);
+          value = structureObjectsInList(value);
+        }
 
         //push attribute into the class
-        javaClass.attributes.push({ name: key, type });
+        javaClass.attributes.push({ name, type, list: isList });
 
-        //if (type === "list" || type === "object")
         if (type === "object") {
-          rawDataQueue.push({ name: key, rawData: value });
+          queue.push({ name, rawData: value });
         }
       });
 
@@ -30,22 +41,15 @@ const jsonToJava = (data: any, fileName: string): javaClass[] => {
   return classes;
 };
 
-/*const parseListToRawData = (rawData: any[]) => {
-  if (!rawData.length)
-    return {};
-
+const structureObjectsInList = (rawData: any[]) => {
   let newUnifiedRawData = {};
-  const firstValueType = discoverTypeFromValue(rawData[0]);
-
-  if (firstValueType !== "object")
-    return { value: rawData[0] };
 
   rawData.forEach(data => {
     newUnifiedRawData = { ...data, ...newUnifiedRawData };
   });
 
   return newUnifiedRawData;
-}*/
+}
 
 const discoverTypeFromValue = (value: any): attributeType => {
   if (Array.isArray(value)) {

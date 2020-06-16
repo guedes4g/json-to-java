@@ -2,7 +2,8 @@ export type attributeType = "String" | "int" | "float" | "boolean" | "object" | 
 
 export type javaAttribute = {
   name: string,
-  type: attributeType
+  type: attributeType,
+  list: boolean
 };
 
 export type javaClass = {
@@ -10,7 +11,7 @@ export type javaClass = {
   attributes: javaAttribute[]
 };
 
-export type rawData = {
+export type rawDataEntity = {
   name: string,
   rawData: any
 };
