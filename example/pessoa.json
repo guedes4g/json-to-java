@@ -1,0 +1,39 @@
+{
+  "name": "Mateus Haas",
+  "age": 26,
+  "gender": "male",
+  "deleted": false,
+  "city": {
+    "name": "Porto Alegre",
+    "state": {
+      "name": "RS"
+    }
+  },
+  "companies": [
+    {
+      "name": "Contato Seguro"
+    },
+    {
+      "name": "Compliance Total"
+    },
+    {
+      "name": "Share Hunter"
+    },
+    {
+      "name": "Mercadini"
+    },
+    {
+      "name": "Sala 302"
+    },
+    {
+      "name": "MHAAS"
+    },
+    {
+      "name": "Linkker"
+    }
+  ],
+  "graduations": [
+    2010,
+    2020
+  ]
+}
