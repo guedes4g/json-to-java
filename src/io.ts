@@ -26,4 +26,4 @@ export const openJsonFile = (filePath: string): javaClass[] | null => {
     console.error("Error parsing file to JSON.");
     return null;
   }
-}
+};

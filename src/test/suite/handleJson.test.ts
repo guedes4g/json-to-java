@@ -67,7 +67,7 @@ suite('Executing handle json tests', () => {
 
 		assert.equal(classes[0].name, "pessoa");
 		assert.equal(classes[0].attributes[0].name, "state");
-		assert.equal(classes[0].attributes[0].type, "State");
+		assert.equal(classes[0].attributes[0].type, "object");
 
 		assert.equal(classes[1].name, "state");
 		assert.equal(classes[1].attributes[0].name, "name");
@@ -79,10 +79,10 @@ suite('Executing handle json tests', () => {
 
 		assert.equal(classes[0].name, "pessoa");
 		assert.equal(classes[0].attributes[0].name, "states");
-		assert.equal(classes[0].attributes[0].type, "States");
+		assert.equal(classes[0].attributes[0].type, "object");
 		assert.equal(classes[0].attributes[0].list, true);
 
-		assert.equal(classes[1].name, "States");
+		assert.equal(classes[1].name, "states");
 		assert.equal(classes[1].attributes[0].name, "uf");
 		assert.equal(classes[1].attributes[0].type, "String");
 		assert.equal(classes[1].attributes[0].list, false);

@@ -11,8 +11,8 @@ export const camelCase = (str: string): string => {
 
 export const addTabPrefix = (str: string) : string => {
   return `\t${str}`;
-}
+};
 
 export const addNewLinePostfix = (str: string) : string => {
   return `${str}\n`;
-}
+};
