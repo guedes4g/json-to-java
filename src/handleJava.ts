@@ -1,34 +1,38 @@
 import { javaClassBody, javaClass, javaAttribute } from "./types";
-import { pascalCase, camelCase } from "./helper";
+import { pascalCase, camelCase, addTabPrefix as t, addNewLinePostfix as n } from "./helper";
 
 const writeJavaClass = (javaClass: javaClass): javaClassBody => {
   let body = "";
 
   body += "package guedes; \n\n";
-  body += `public class ${pascalCase(javaClass.name)} { \n`;
+  body += n(`public class ${pascalCase(javaClass.name)} {`);
 
   //attributes
   javaClass.attributes.forEach(attribute => {
-    body += `private ${handleJavaClassType(attribute)} ${camelCase(attribute.name)}; \n`;
+    body += t(n(`private ${handleJavaClassType(attribute)} ${camelCase(attribute.name)};`));
   });
 
-  body += "\n\n";
+  body += n("");
 
   //constructor
-  body += `public ${pascalCase(javaClass.name)}() { \n\n } \n\n`;
+  body += t(n(`public ${pascalCase(javaClass.name)}() {`));
+  body += n("");
+  body += t(n(`}`));
+
+  body += n("");
 
   //getter
   javaClass.attributes.forEach(attribute => {
-    body += `public get${pascalCase(attribute.name)}() { \n`;
-    body += `\t\t return this.${camelCase(attribute.name)}; \n`;
-    body += `} \n\n`;
+    body += t(n(`public get${pascalCase(attribute.name)}() {`));
+    body += t(t(n(`return this.${camelCase(attribute.name)};`)));
+    body += t(n(n(`}`)));
   });
 
   //setter
   javaClass.attributes.forEach(attribute => {
-    body += `public set${pascalCase(attribute.name)}(${handleJavaClassType(attribute)} value) { \n`;
-    body += `\t\t this.${camelCase(attribute.name)} = value; \n`;
-    body += `} \n\n`;
+    body += t(n(`public set${pascalCase(attribute.name)}(${handleJavaClassType(attribute)} value) {`));
+    body += t(t(n(`this.${camelCase(attribute.name)} = value;`)));
+    body += t(n(n(`}`)));
   });
 
   body += `}`;

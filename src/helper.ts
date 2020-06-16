@@ -8,3 +8,11 @@ export const pascalCase = (str: string): string => {
 export const camelCase = (str: string): string => {
   return lodashCamelCase(str);
 };
+
+export const addTabPrefix = (str: string) : string => {
+  return `\t${str}`;
+}
+
+export const addNewLinePostfix = (str: string) : string => {
+  return `${str}\n`;
+}
