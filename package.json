@@ -11,14 +11,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:json2java.helloWorld"
+		"onCommand:json2java.convert"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "json2java.helloWorld",
-				"title": "Hello World"
+				"command": "json2java.convert",
+				"title": "Convert Java From JSON"
 			}
 		]
 	},

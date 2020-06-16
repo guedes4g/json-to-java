@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('json2java.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('json2java.convert', () => {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
@@ -25,6 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 					vscode.window.showOpenDialog({defaultUri: uri, canSelectFiles: false, canSelectFolders: true, canSelectMany: false}).then((folderURL) => {
 						if(folderURL && folderURL.length) {
 							main(fileURL[0], folderURL[0]);
+							vscode.window.showInformationMessage('Files have been generated successfully');
 						}
 					});
 				};
