@@ -41,11 +41,11 @@ const writeJavaClass = (javaClass: javaClass): javaClassBody => {
 };
 
 const handleJavaClassType = (attribute: javaAttribute) => {
-  if (attribute.type === "object") {
-    return pascalCase(attribute.name);
-  }
+  const attributeType = (attribute.type === "object") ?
+    pascalCase(attribute.name) :
+    attribute.type;
 
-  return attribute.type;
+  return attribute.list ? `List<${attributeType}>` : attributeType;
 };
 
 export default writeJavaClass;
